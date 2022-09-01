@@ -26,5 +26,38 @@ Object.assign(Car.prototype, mixinCarFeatures);
 const bmw = new Car("BMW");
 const benz = new Car("BENZ");
 
-// ** Perfect! Mixins make it easy for us to add custom functionality to classes or 
+// ** Perfect! Mixins make it easy for us to add custom functionality to classes or
 // ** objects without using inheritance.
+
+// ** Although we can add functionality with mixins without inheritance, mixins themselves can use inheritance!
+class BMW {
+  constructor(germanName) {
+    this.germanName = germanName;
+  }
+}
+
+const mixinBMWFeatures = {
+  // ** bellow line is same as i say Object.assign(mixinBMWFeatures, mixinCarFeatures)
+  // __proto__: mixinCarFeatures,
+  sayYourCountry: () => console.log("made in Germany"),
+  goRight: () => {
+    super.goRight();
+    console.log("go right faster than other cars");
+  },
+};
+
+Object.assign(mixinBMWFeatures, mixinCarFeatures);
+Object.assign(BMW.prototype, mixinBMWFeatures);
+
+const powerfulBMW = new BMW("BMW!");
+
+// TODO for more think and work about bellow lines
+// ** Mixins were often used to add functionality to React components before the introduction of ES6 classes. 
+// ** The React team discourages the use of mixins as it easily adds unnecessary complexity to a component,
+// ** making it hard to maintain and reuse. The React team encouraged the use of higher order components instead, 
+// ** which can now often be replaced by Hooks.
+
+// !! Mixins allow us to easily add functionality to objects without inheritance by injecting functionality 
+// !! into an object's prototype. Modifying an object's prototype is seen as bad practice,
+// !! as it can lead to prototype pollution and a level of uncertainty regarding 
+// !! the origin of our functions.
