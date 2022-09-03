@@ -1,0 +1,2 @@
+1- HOC pattern
+2- render props
