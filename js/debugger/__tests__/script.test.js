@@ -1,4 +1,4 @@
-const { regularFunction, regularFunctionWithStrictMode, personObj } = require('../script');
+const { regularFunction, regularFunctionWithStrictMode, personObj, Person } = require('../script');
 
 describe('Regular function(function declaration and function expression)', () => {
     describe('When call during simple invocation', () => {
@@ -23,6 +23,14 @@ describe('Regular function(function declaration and function expression)', () =>
         test('Then `this` should object that we pass to those methods', () => {
             const regularFunctionBindByPersonObj = regularFunction.bind(personObj);
             expect(regularFunctionBindByPersonObj().thisValue).toMatchObject(personObj);
+        });
+    });
+
+    describe('When call during constructor function (function that call with new keyword)', () => {
+        test('Then `this` should be instance object that we create with constructor function', () => {
+            const person = new Person('Mike');
+
+            expect(person.getThis()).toMatchObject(person);
         });
     });
 });

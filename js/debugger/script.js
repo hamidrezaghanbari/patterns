@@ -30,4 +30,15 @@ const personObj = {
         return myThis;
     },
 };
-module.exports = { regularFunction, regularFunctionWithStrictMode, personObj };
+
+function Person(name) {
+    this.name = name;
+    this.getThis = function() {
+        myThis = this;
+    
+        return myThis;
+    }
+
+}
+
+module.exports = { regularFunction, regularFunctionWithStrictMode, personObj, Person };
