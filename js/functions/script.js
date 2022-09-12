@@ -96,4 +96,52 @@ function Car(color) {
   this.color = color;
 }
 
-const myCar = new Car('red')
+const myCar = new Car("red");
+
+// ** 3-------------------------- argument object ---------------------------
+// ** in regular object arguments is special array like object that show input of functions when it called
+function regularFunction() {
+  console.log(arguments);
+}
+
+regularFunction(4, 5, 34);
+// ?? in arrow function arguments object is like this keyword that resolved lexically and arguments is arguments of parent function
+function anotherRegularFunction() {
+  const arrowFunction = () => {
+    console.log(arguments);
+  };
+
+  return arrowFunction("first", "second");
+}
+
+anotherRegularFunction(1, 23, 4423);
+
+// ** 4------------------------ implicit return --------------------------------
+// arrow function can return without return keyword
+const simpleOneLineArrowFunction = () => "arrow function without return keyword";
+
+simpleOneLineArrowFunction();
+
+// ** 5 ----------------------- function as method of object -------------------
+class FunctionClass {
+  constructor(name) {
+    this.name = name;
+  }
+
+  logThis() {
+    console.log(this);
+  }
+
+  logThisArrow = () => {
+    console.log(this);
+  };
+}
+
+const instanceOfFunctionClass = new FunctionClass("mike");
+console.log(instanceOfFunctionClass.logThis());
+
+setTimeout(instanceOfFunctionClass.logThis, 1000); // when we pass regular function of class in another function this is not this of class
+// ** for this we must bind that regular method to object of class like bellow
+// setTimeout(instanceOfRegularFunctionClass.logThis.bind(instanceOfRegularFunctionClass), 1000)
+// ** but in arrow function this is always refer to the parent function (this of class(syntax sugar of constructor function))
+setTimeout(instanceOfFunctionClass.logThisArrow, 100)
