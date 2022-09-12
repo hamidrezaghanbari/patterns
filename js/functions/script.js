@@ -144,4 +144,6 @@ setTimeout(instanceOfFunctionClass.logThis, 1000); // when we pass regular funct
 // ** for this we must bind that regular method to object of class like bellow
 // setTimeout(instanceOfRegularFunctionClass.logThis.bind(instanceOfRegularFunctionClass), 1000)
 // ** but in arrow function this is always refer to the parent function (this of class(syntax sugar of constructor function))
-setTimeout(instanceOfFunctionClass.logThisArrow, 100)
+setTimeout(instanceOfFunctionClass.logThisArrow, 100);
+
+// TODO function declaration is hoisted but function expression is not hoisted

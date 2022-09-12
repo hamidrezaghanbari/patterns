@@ -4,8 +4,21 @@
   "description": "patterns",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest",
+    "testJs": "jest ./js"
   },
+  "eslintConfig": {
+    "extends": [
+        "react-app",
+        "react-app/jest",
+        "js"
+    ]
+  },
+  "jest": {
+    "collectCoverageFrom": [
+        "src/components/**/**.(tsx|js|jsx|ts)"
+    ]
+},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hamidrezaghanbari/patterns.git"
@@ -24,6 +37,12 @@
     "eslint-plugin-jsx-a11y": "^6.5.1",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.28.0",
-    "eslint-plugin-react-hooks": "^4.3.0"
+    "eslint-plugin-react-hooks": "^4.3.0",
+    "jest": "^29.0.3",
+    "@typescript-eslint/eslint-plugin": "^4.28.2",
+    "@typescript-eslint/parser": "^4.28.2",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
+    "eslint-plugin-unused-imports": "^1.1.2",
+    "prettier": "^2.2.1"
   }
 }
