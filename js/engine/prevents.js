@@ -55,4 +55,4 @@ mike.gender = 'male';
 john.gender = 'male';
 john.age = 44;
 
-
+// ** web assembly is binary executable format
