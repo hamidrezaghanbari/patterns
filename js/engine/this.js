@@ -83,3 +83,53 @@ object.getVal()
 
 // ** arrow function is lexically bound => mean when we use arrow function this is object that soround the arrow function
 // ** bind method for example say hey function this inside you is refer to object that i passed to you 
+
+
+// ** bind method is useful for function borrowing
+const human = {
+    name: 'Hamid',
+    health: false,
+    sayMyName: () => {
+        return this.name
+    },
+    sayMyNameFunction: function () {
+        return this.name
+    },
+    isHealthy: function (word) {
+        return word + '  ' + this.health
+    }
+}
+
+const dog = {
+    name: 'Mike',
+    health: true
+}
+// ** dog borrow function from human function
+// ** bind return new function but call and apply imidiatly run that function 
+// ?? call and bind use case is for borrowing function from another object
+// ?? bind method is useful for call function in certain context this keyword, second use of bind method is for function currying
+const dogHealthChecker = human.isHealthy.bind(dog)
+console.log(dogHealthChecker())
+console.log(human.isHealthy.call(dog, 'you are'))
+console.log(human.isHealthy.apply(dog, ['you are']))
+
+const m = human.sayMyName.bind(dog) // call, bind, apply, not work with arrow function
+const c = human.sayMyNameFunction.bind(dog) // call, bind, apply, not work with arrow function
+
+console.log(m())
+console.log(c())
+
+
+
+// ** example code for find max of array
+const array = [4, 2, 3];
+
+function getMaxNumber(arr) {
+    let result = 'array is empty'
+    arr.forEach((item, idx) => {
+        idx !== 0 ? result = item > result ? item : result : result = item
+    })
+    return result
+}
+
+console.log(getMaxNumber(array))
