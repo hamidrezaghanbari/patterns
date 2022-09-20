@@ -67,3 +67,18 @@ outerFunction();
 
 // ** NOTE: in global execution context we have global object and this (refer to global object) but in function execution context
 // ** we have this and arguments(special object that hold arguments properties like {0: 'arg1', 1: 'arg2'})
+
+// ** arguments
+
+// ** scope chain ==> each context(each world has link to outside context (outer world) link to its parent)
+// ** the word lexically mean where the function or word written
+// ** each function has variable environment, and that function with scope chain connect to parent scope and again and again 
+
+
+// ** IIFE : the function in the IIFE is function expression not function declaration because not started by function started by (
+// ** benefit of IIFE is when function inside IIFE is function expression and not function declaration is not assign to global object
+// ** and all properties declared inside of it are scoped inside that and remove concern of name collision and only all variables are
+// ** accessible inside that but not outside
+(function() {
+
+})()
